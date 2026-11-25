@@ -7,37 +7,37 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-white text-rhema-ink border-b-4 border-rhema-gold">
-      {/* Custom Ministry Artwork Background - Crisp & Vibrant */}
+      {/* Full Uncropped Ministry Artwork - Native Aspect Ratio, Zero Blur/Stretch */}
       <div
-        className="absolute inset-0 bg-contain md:bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-contain bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${organization.heroBgPath}')` }}
       />
-      {/* Light, Targeted Readability Veil (Leaves Cross, Africa & Bible Vivid) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/35 to-transparent" />
 
-      <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="relative max-w-6xl mx-auto px-4 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left Editorial Narrative */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-5">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rhema-green text-rhema-goldLight text-xs font-semibold tracking-wider uppercase shadow-md">
             <Sparkles className="w-3.5 h-3.5 text-rhema-gold" />
             <span>Faith • Hope • Impact — Across Kenya &amp; Africa</span>
           </div>
 
           <h1
-            className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-rhema-green leading-[1.15] tracking-tight"
-            style={{ textShadow: "0 2px 14px rgba(255,255,255,0.95), 0 1px 3px rgba(255,255,255,1)" }}
+            className="font-serif text-3xl sm:text-5xl lg:text-[50px] font-bold text-rhema-green leading-[1.15] tracking-tight"
+            style={{
+              textShadow:
+                "0 0 18px rgba(255,255,255,1), 0 0 8px rgba(255,255,255,1), 0 1px 2px rgba(255,255,255,1)",
+            }}
           >
             {organization.tagline}
           </h1>
 
           <p
-            className="font-serif italic text-xl text-rhema-burgundy font-bold"
-            style={{ textShadow: "0 1px 10px rgba(255,255,255,0.95)" }}
+            className="font-serif italic text-xl text-rhema-burgundy font-bold inline-block bg-white/85 px-3 py-1 rounded-lg"
           >
             “{organization.motto}”
           </p>
 
-          <p className="text-base md:text-lg text-rhema-ink leading-relaxed max-w-2xl font-semibold bg-white/75 backdrop-blur-[2px] p-4 rounded-xl border border-white/80 shadow-sm">
+          <p className="text-base md:text-lg text-rhema-ink leading-relaxed max-w-2xl font-semibold bg-white/85 backdrop-blur-[2px] p-4 rounded-xl border border-rhema-gold/30 shadow-sm">
             Led by{" "}
             <span className="text-rhema-green font-bold underline decoration-rhema-gold decoration-2 underline-offset-4">
               {founders.names}
@@ -48,7 +48,7 @@ export default function Hero() {
           </p>
 
           {/* Primary Action Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <a
               href="#partner"
               className="inline-flex items-center gap-2.5 bg-rhema-green hover:bg-rhema-greenLight text-white font-bold px-7 py-3.5 rounded-lg shadow-lg transition transform hover:-translate-y-0.5"
@@ -66,8 +66,8 @@ export default function Hero() {
           </div>
 
           {/* Guiding Scripture Strip */}
-          <div className="pt-3">
-            <div className="bg-white/90 backdrop-blur-sm border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl shadow-md max-w-xl">
+          <div className="pt-2">
+            <div className="bg-white/92 backdrop-blur-sm border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl shadow-md max-w-xl">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rhema-burgundy mb-1">
                 <BookOpen className="w-4 h-4 text-rhema-gold" />
                 <span>{scriptures.primary.reference}</span>
