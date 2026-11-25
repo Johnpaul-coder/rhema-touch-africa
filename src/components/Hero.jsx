@@ -7,7 +7,7 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-white text-rhema-ink border-b-4 border-rhema-gold">
-      {/* Uncropped Artwork Image with Direct Edge-Feathering (Eliminates Hard Left/Right Corners) */}
+      {/* Uncropped Artwork Image with Smooth Left, Right & Bottom Edge Feathering */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <img
           src={organization.heroBgPath}
@@ -16,9 +16,11 @@ export default function Hero() {
           className="h-full w-auto max-w-none object-contain select-none"
           style={{
             WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%), linear-gradient(to bottom, black 88%, transparent 100%)",
+            WebkitMaskComposite: "source-in",
             maskImage:
-              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%), linear-gradient(to bottom, black 88%, transparent 100%)",
+            maskComposite: "intersect",
           }}
         />
       </div>
