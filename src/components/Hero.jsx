@@ -1,89 +1,128 @@
 import React from "react";
-import { ArrowRight, BookOpen, MapPin } from "lucide-react";
+import { ArrowRight, BookOpen, HeartHandshake, Sparkles, ShieldCheck } from "lucide-react";
 import { ministryContent } from "../data/ministryContent";
 
 export default function Hero() {
   const { organization, founders, scriptures } = ministryContent;
 
   return (
-    <section className="relative bg-gradient-to-b from-rhema-ivory via-white to-rhema-ivory border-b border-rhema-gold/30">
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        {/* Left Editorial Column */}
+    <section className="relative overflow-hidden bg-rhema-green text-white border-b-4 border-rhema-gold">
+      {/* Subtle Decorative Radial Glow */}
+      <div
+        className="pointer-events-none absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, #D49A2A 0%, transparent 70%)" }}
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 -left-24 w-[440px] h-[440px] rounded-full opacity-25 blur-3xl"
+        style={{ background: "radial-gradient(circle, #7A151B 0%, transparent 70%)" }}
+      />
+
+      <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Left Editorial Narrative */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rhema-green/10 border border-rhema-green/20 text-rhema-green text-xs font-semibold tracking-wide uppercase">
-            <MapPin className="w-3.5 h-3.5 text-rhema-burgundy" />
-            <span>Serving Kenya &amp; Communities Across Africa</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-rhema-gold/40 text-rhema-goldLight text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-rhema-gold" />
+            <span>Faith • Hope • Impact — Across Kenya &amp; Africa</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-rhema-green leading-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-white leading-[1.15] tracking-tight">
             {organization.tagline}
           </h1>
 
-          <p className="font-serif italic text-lg text-rhema-burgundy font-medium">
+          <p className="font-serif italic text-xl text-rhema-gold font-medium">
             “{organization.motto}”
           </p>
 
-          <p className="text-base md:text-lg text-rhema-ink/85 leading-relaxed max-w-2xl">
-            Co-founded by{" "}
-            <strong className="text-rhema-green font-semibold">
+          <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
+            Led by{" "}
+            <span className="text-white font-semibold underline decoration-rhema-gold decoration-2 underline-offset-4">
               {founders.names}
-            </strong>{" "}
-            ({founders.titles}), Rhema Touch Africa bridges spiritual
-            transformation with practical medical care, benevolence, and
-            community empowerment.
+            </span>
+            —husband and wife, Ordained Ministers, and Registered Nurses—Rhema
+            Touch Africa turns Christian compassion into practical healing,
+            dignity, and lasting community transformation.
           </p>
 
-          {/* Guiding Scripture Callout */}
-          <div className="bg-rhema-ivory border-l-4 border-rhema-gold p-4 rounded-r-lg shadow-sm max-w-xl">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rhema-burgundy mb-1">
-              <BookOpen className="w-4 h-4 text-rhema-gold" />
-              <span>Guiding Scripture — {scriptures.primary.reference}</span>
-            </div>
-            <p className="text-sm text-rhema-ink/90 leading-relaxed">
-              {scriptures.primary.summary}
-            </p>
-          </div>
-
-          {/* Action Buttons */}
+          {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
-              href="#founders"
-              className="inline-flex items-center gap-2 bg-rhema-green hover:bg-rhema-greenLight text-white font-semibold px-6 py-3 rounded-md shadow transition"
+              href="#partner"
+              className="inline-flex items-center gap-2.5 bg-rhema-gold hover:bg-amber-500 text-rhema-ink font-bold px-7 py-3.5 rounded-lg shadow-lg shadow-black/25 transition transform hover:-translate-y-0.5"
             >
-              <span>Meet the Founders</span>
-              <ArrowRight className="w-4 h-4 text-rhema-gold" />
+              <HeartHandshake className="w-5 h-5 text-rhema-burgundy" />
+              <span>Partner With the Mission</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#pillars"
-              className="inline-flex items-center gap-2 bg-white hover:bg-rhema-goldLight/30 text-rhema-green border border-rhema-green/30 font-semibold px-6 py-3 rounded-md transition"
+              href="#founders"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold px-6 py-3.5 rounded-lg backdrop-blur-sm transition"
             >
-              <span>Explore Our Work</span>
+              <span>Read Our Story</span>
             </a>
+          </div>
+
+          {/* Guiding Scripture Strip */}
+          <div className="pt-4">
+            <div className="bg-black/25 border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl backdrop-blur-sm max-w-xl">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rhema-gold mb-1">
+                <BookOpen className="w-4 h-4" />
+                <span>{scriptures.primary.reference}</span>
+              </div>
+              <p className="text-sm text-white/90 leading-relaxed">
+                {scriptures.primary.summary}
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Right Portrait Frame */}
+        {/* Right Portrait Showcase */}
         <div className="lg:col-span-5">
-          <div className="relative bg-white p-3 rounded-2xl shadow-lg border border-rhema-gold/40">
-            <img
-              src={founders.portraitPath}
-              alt={founders.names}
-              className="w-full h-[420px] object-cover object-top rounded-xl"
-            />
-            <div className="mt-3 px-2 py-2 flex items-center justify-between border-t border-rhema-gold/20">
-              <div>
-                <p className="font-serif font-bold text-rhema-green text-base">
-                  {founders.names}
-                </p>
-                <p className="text-xs text-rhema-ink/75">
-                  Ordained Ministers &amp; Registered Nurses
-                </p>
+          <div className="relative mx-auto max-w-md">
+            {/* Decorative Gold Offset Frame */}
+            <div className="absolute -inset-2.5 rounded-2xl bg-gradient-to-tr from-rhema-gold via-rhema-burgundy to-rhema-gold opacity-75 blur-[1px]" />
+
+            <div className="relative bg-rhema-ivory p-3 rounded-2xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-xl">
+                <img
+                  src={founders.portraitPath}
+                  alt={founders.names}
+                  className="w-full h-[440px] object-cover object-top"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-5 text-white">
+                  <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-rhema-gold font-bold mb-1">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Co-Founders • Portland &amp; Nairobi</span>
+                  </div>
+                  <p className="font-serif text-lg font-bold leading-snug">
+                    {founders.names}
+                  </p>
+                  <p className="text-xs text-white/80 mt-0.5">
+                    Ordained Ministers • Registered Nurses • 19 Years of Marriage
+                  </p>
+                </div>
               </div>
-              <img
-                src={organization.logoPath}
-                alt="Emblem"
-                className="w-11 h-11 rounded-full object-cover border border-rhema-gold"
-              />
+
+              {/* Bottom Emblem Bar */}
+              <div className="mt-3 px-2 py-1.5 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={organization.logoPath}
+                    alt={organization.name}
+                    className="w-10 h-10 rounded-full object-cover border border-rhema-gold"
+                  />
+                  <div>
+                    <span className="block font-serif font-bold text-rhema-green text-sm leading-none">
+                      {organization.name}
+                    </span>
+                    <span className="block text-[11px] text-rhema-burgundy font-semibold mt-0.5">
+                      Christian Nonprofit Ministry
+                    </span>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-rhema-green bg-rhema-green/10 px-2.5 py-1 rounded-full">
+                  Est. Faith Legacy
+                </span>
+              </div>
             </div>
           </div>
         </div>

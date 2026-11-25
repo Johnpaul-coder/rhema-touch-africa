@@ -1,136 +1,222 @@
 import React, { useState } from "react";
-import { Heart, Users, Stethoscope, Award } from "lucide-react";
+import {
+  Heart,
+  Users,
+  Stethoscope,
+  Award,
+  Sparkles,
+  FileText,
+  X,
+} from "lucide-react";
 import { ministryContent } from "../data/ministryContent";
 
 export default function FoundersBio() {
   const { founders } = ministryContent;
-  const [showProfileFlyer, setShowProfileFlyer] = useState(false);
+  const [activeTab, setActiveTab] = useState("calling");
+  const [flyerModalOpen, setFlyerModalOpen] = useState(false);
+
+  const tabs = [
+    { id: "calling", label: "Shared Calling & Credentials" },
+    { id: "peris", label: "Minister Peris Spotlight" },
+    { id: "family", label: "19 Years of Family & Legacy" },
+  ];
 
   return (
-    <section id="founders" className="py-16 md:py-24 bg-white border-b border-rhema-gold/30">
+    <section
+      id="founders"
+      className="py-16 md:py-24 bg-rhema-ivory border-b border-rhema-gold/30"
+    >
       <div className="max-w-6xl mx-auto px-4">
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-widest text-rhema-burgundy">
-            Founders’ Biography
-          </span>
+        {/* Editorial Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rhema-burgundy">
+            <Sparkles className="w-3.5 h-3.5 text-rhema-gold" />
+            <span>Meet the Co-Founders</span>
+          </div>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-rhema-green mt-2">
             {founders.names}
           </h2>
           <p className="text-sm md:text-base text-rhema-ink/75 mt-2 font-medium">
             {founders.titles}
           </p>
-          <div className="w-20 h-1 bg-rhema-gold mx-auto mt-4 rounded-full" />
+          <div className="w-24 h-1 bg-rhema-gold mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Joint Calling & Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
-          <div className="lg:col-span-7 space-y-5 text-rhema-ink/90 leading-relaxed text-base">
-            {founders.overview.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
+        {/* Interactive Story Tabs */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-10">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-sm ${
+                  isActive
+                    ? "bg-rhema-green text-white border border-rhema-green"
+                    : "bg-white text-rhema-ink hover:bg-rhema-goldLight/40 border border-rhema-gold/40"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
 
-            {/* Credential Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-rhema-ivory border border-rhema-gold/30">
-                <Stethoscope className="w-5 h-5 text-rhema-burgundy shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-serif font-bold text-rhema-green text-sm">
-                    Healthcare &amp; Nursing Leadership
-                  </h4>
-                  <p className="text-xs text-rhema-ink/80 mt-1">
-                    Both founders are Registered Nurses bringing clinical care,
-                    patient advocacy, and management expertise to underserved communities.
-                  </p>
+        {/* Tab 1: Shared Calling & Credentials */}
+        {activeTab === "calling" && (
+          <div className="bg-white rounded-2xl p-6 md:p-10 border border-rhema-gold/40 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-5 text-rhema-ink/90 leading-relaxed text-base">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-rhema-burgundy">
+                Faith in Action
+              </span>
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-rhema-green">
+                Bridging Clinical Healing &amp; Gospel Transformation
+              </h3>
+              {founders.overview.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="lg:col-span-5 space-y-4">
+              <div className="p-5 rounded-xl bg-rhema-ivory border-l-4 border-rhema-green shadow-sm">
+                <div className="flex items-center gap-2.5 text-rhema-green font-serif font-bold text-base mb-1.5">
+                  <Stethoscope className="w-5 h-5 text-rhema-burgundy" />
+                  <span>Registered Nurses &amp; Leaders</span>
                 </div>
+                <p className="text-sm text-rhema-ink/80 leading-relaxed">
+                  Hands-on clinical nursing, healthcare management, and patient
+                  advocacy dedicated to restoring human dignity in underserved
+                  communities.
+                </p>
               </div>
 
-              <div className="flex items-start gap-3 p-4 rounded-lg bg-rhema-ivory border border-rhema-gold/30">
-                <Award className="w-5 h-5 text-rhema-burgundy shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-serif font-bold text-rhema-green text-sm">
-                    Ordained Christian Ministry
-                  </h4>
-                  <p className="text-xs text-rhema-ink/80 mt-1">
-                    Decades of pastoral fellowship, discipleship, benevolence, and
-                    cross-continental mission leadership across Kenya and the U.S.
-                  </p>
+              <div className="p-5 rounded-xl bg-rhema-ivory border-l-4 border-rhema-burgundy shadow-sm">
+                <div className="flex items-center gap-2.5 text-rhema-green font-serif font-bold text-base mb-1.5">
+                  <Award className="w-5 h-5 text-rhema-gold" />
+                  <span>Ordained Christian Ministers</span>
                 </div>
+                <p className="text-sm text-rhema-ink/80 leading-relaxed">
+                  Serving faithfully across Kenya and the United States—currently
+                  ministering at Fountain Gateway Church in Portland, Oregon.
+                </p>
               </div>
             </div>
           </div>
+        )}
 
-          {/* Family & Personal Life Card */}
-          <div className="lg:col-span-5 bg-rhema-ivory rounded-xl p-6 md:p-8 border border-rhema-gold/40 shadow-sm space-y-4">
-            <div className="inline-flex items-center gap-2 text-rhema-burgundy font-semibold text-xs uppercase tracking-wider">
-              <Heart className="w-4 h-4 fill-rhema-burgundy" />
-              <span>Family &amp; Personal Life</span>
-            </div>
-            <h3 className="font-serif text-2xl font-bold text-rhema-green">
-              {founders.family.marriageYears}
-            </h3>
-            <p className="text-sm text-rhema-ink/85 leading-relaxed">
-              {founders.family.summary}
-            </p>
-            <div className="pt-3 border-t border-rhema-gold/30 flex items-center gap-3 text-xs text-rhema-green font-semibold">
-              <Users className="w-4 h-4 text-rhema-gold" />
-              <span>Three Boys • Raising a Daughter from a Distance • Family Ventures</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Minister Peris Wanjiku Kahoro Dedicated Spotlight */}
-        <div className="bg-rhema-green text-white rounded-2xl p-6 md:p-10 shadow-md border border-rhema-gold/40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
+        {/* Tab 2: Minister Peris Wanjiku Kahoro Spotlight */}
+        {activeTab === "peris" && (
+          <div className="bg-rhema-green text-white rounded-2xl p-6 md:p-10 shadow-lg border border-rhema-gold/50 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-5">
               <span className="inline-block text-xs font-bold uppercase tracking-widest text-rhema-gold">
-                Co-Founder Spotlight
+                Co-Founder Profile
               </span>
               <h3 className="font-serif text-2xl md:text-3xl font-bold">
                 {founders.perisSpotlight.name}
               </h3>
-              <p className="text-sm text-rhema-goldLight font-medium">
-                {founders.perisSpotlight.role} • {founders.perisSpotlight.credentials}
+              <p className="text-sm text-rhema-goldLight font-semibold">
+                {founders.perisSpotlight.role} •{" "}
+                {founders.perisSpotlight.credentials}
               </p>
-              <p className="text-white/90 leading-relaxed text-sm md:text-base">
+              <p className="text-white/90 leading-relaxed text-base">
                 {founders.perisSpotlight.bio}
               </p>
               <div className="pt-2">
                 <button
                   type="button"
-                  onClick={() => setShowProfileFlyer(!showProfileFlyer)}
-                  className="inline-flex items-center gap-2 bg-rhema-gold hover:bg-amber-500 text-rhema-ink font-semibold text-xs uppercase tracking-wider px-4 py-2.5 rounded transition"
+                  onClick={() => setFlyerModalOpen(true)}
+                  className="inline-flex items-center gap-2 bg-rhema-gold hover:bg-amber-500 text-rhema-ink font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-lg shadow transition"
                 >
-                  {showProfileFlyer
-                    ? "Hide Official Profile Flyer"
-                    : "View Official Profile Flyer"}
+                  <FileText className="w-4 h-4 text-rhema-burgundy" />
+                  <span>Open Full Official Profile Flyer</span>
                 </button>
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="bg-white/10 p-2.5 rounded-xl border border-rhema-gold/40 max-w-xs">
+            <div className="lg:col-span-5 flex justify-center">
+              <div
+                onClick={() => setFlyerModalOpen(true)}
+                className="cursor-pointer group relative bg-white/10 p-3 rounded-2xl border border-rhema-gold/50 max-w-sm shadow-xl"
+              >
                 <img
                   src={founders.perisFlyerPath}
                   alt={founders.perisSpotlight.name}
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="w-full h-72 object-cover rounded-xl group-hover:opacity-95 transition"
+                />
+                <span className="mt-2.5 block text-center text-xs text-rhema-goldLight font-medium">
+                  Click image to view full biography flyer
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Family & Personal Life */}
+        {activeTab === "family" && (
+          <div className="bg-white rounded-2xl p-6 md:p-10 border border-rhema-gold/40 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 text-rhema-burgundy font-bold text-xs uppercase tracking-widest">
+                <Heart className="w-4 h-4 fill-rhema-burgundy" />
+                <span>Covenant Marriage &amp; Family</span>
+              </div>
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-rhema-green">
+                {founders.family.marriageYears}
+              </h3>
+              <p className="text-base text-rhema-ink/90 leading-relaxed">
+                {founders.family.summary}
+              </p>
+              <div className="pt-2 flex flex-wrap gap-3 text-xs font-semibold text-rhema-green">
+                <span className="inline-flex items-center gap-1.5 bg-rhema-ivory px-3.5 py-2 rounded-full border border-rhema-gold/40">
+                  <Users className="w-4 h-4 text-rhema-gold" />
+                  Proud Parents of Three Boys
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-rhema-ivory px-3.5 py-2 rounded-full border border-rhema-gold/40">
+                  <Heart className="w-4 h-4 text-rhema-burgundy" />
+                  Raising a Daughter from a Distance
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="bg-rhema-ivory p-3 rounded-2xl border border-rhema-gold/40 shadow-sm">
+                <img
+                  src={founders.portraitPath}
+                  alt={founders.names}
+                  className="w-full h-72 object-cover object-top rounded-xl"
                 />
               </div>
             </div>
           </div>
-
-          {/* Expandable Full Flyer View */}
-          {showProfileFlyer && (
-            <div className="mt-8 pt-8 border-t border-white/15 flex justify-center">
-              <img
-                src={founders.perisFlyerPath}
-                alt="Minister Peris Wanjiku Kahoro Official Profile"
-                className="max-w-2xl w-full rounded-xl shadow-2xl border-2 border-rhema-gold"
-              />
-            </div>
-          )}
-        </div>
+        )}
       </div>
+
+      {/* Lightbox Modal for Official Profile Flyer */}
+      {flyerModalOpen && (
+        <div
+          onClick={() => setFlyerModalOpen(false)}
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-2xl w-full bg-white rounded-2xl p-3 shadow-2xl border-2 border-rhema-gold"
+          >
+            <button
+              type="button"
+              onClick={() => setFlyerModalOpen(false)}
+              className="absolute -top-4 -right-4 w-9 h-9 rounded-full bg-rhema-burgundy text-white flex items-center justify-center shadow-lg hover:bg-rhema-green transition"
+              aria-label="Close Flyer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={founders.perisFlyerPath}
+              alt="Minister Peris Wanjiku Kahoro Official Flyer"
+              className="w-full max-h-[82vh] object-contain rounded-xl"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
