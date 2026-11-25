@@ -8,13 +8,13 @@ export default {
     extend: {
       colors: {
         rhema: {
-          green: "#0E3B25",      // Deep Forest Green
-          greenLight: "#165235",
-          burgundy: "#7A151B",   // Crimson Burgundy
-          gold: "#D49A2A",       // Warm Gold
-          goldLight: "#F3E5C2",
-          ivory: "#FDFBF7",      // Classic Warm Paper Background
-          ink: "#1E2421",        // Readable Charcoal Text
+          green: "#0D4A30",      // Richer, brighter Emerald Forest Green
+          greenLight: "#166543",
+          burgundy: "#8B1E24",   // Refined Crimson accent
+          gold: "#D99B26",       // Brighter Warm Harvest Gold
+          goldLight: "#F7E9C8",
+          ivory: "#FAF8F3",      // Cleaner Warm Alabaster
+          ink: "#1A2420",        // Deep Charcoal
         },
       },
       fontFamily: {
