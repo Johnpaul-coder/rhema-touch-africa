@@ -31,21 +31,41 @@ export default function Hero() {
             {organization.tagline}
           </h1>
 
-          <p
-            className="font-serif italic text-xl text-rhema-burgundy font-bold inline-block bg-white/85 px-3 py-1 rounded-lg"
-          >
+          <p className="font-serif italic text-xl text-rhema-burgundy font-bold inline-block bg-white/85 px-3 py-1 rounded-lg">
             “{organization.motto}”
           </p>
 
-          <p className="text-base md:text-lg text-rhema-ink leading-relaxed max-w-2xl font-semibold bg-white/85 backdrop-blur-[2px] p-4 rounded-xl border border-rhema-gold/30 shadow-sm">
-            Led by{" "}
-            <span className="text-rhema-green font-bold underline decoration-rhema-gold decoration-2 underline-offset-4">
-              {founders.names}
-            </span>
-            —husband and wife, Ordained Ministers, and Registered Nurses—Rhema
-            Touch Africa turns Christian compassion into practical healing,
-            dignity, and lasting community transformation.
-          </p>
+          {/* Clean Editorial Lead + Credential Badges */}
+          <div className="space-y-3.5 max-w-2xl">
+            <p
+              className="text-base md:text-lg text-rhema-ink leading-relaxed font-semibold"
+              style={{
+                textShadow:
+                  "0 0 16px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,1)",
+              }}
+            >
+              Led by{" "}
+              <span className="text-rhema-green font-extrabold underline decoration-rhema-gold decoration-2 underline-offset-4">
+                {founders.names}
+              </span>
+              , Rhema Touch Africa turns Christian compassion into practical
+              healing, dignity, and lasting community transformation.
+            </p>
+
+            {/* Crisp Credential Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {["Husband & Wife", "Ordained Ministers", "Registered Nurses"].map(
+                (role) => (
+                  <span
+                    key={role}
+                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-rhema-green border border-rhema-gold/50 shadow-sm"
+                  >
+                    {role}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
 
           {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-1">
