@@ -6,32 +6,38 @@ export default function Hero() {
   const { organization, founders, scriptures } = ministryContent;
 
   return (
-    <section className="relative overflow-hidden bg-rhema-ivory text-rhema-ink border-b-4 border-rhema-gold">
-      {/* Custom Ministry Artwork Background */}
+    <section className="relative overflow-hidden bg-white text-rhema-ink border-b-4 border-rhema-gold">
+      {/* Custom Ministry Artwork Background - Crisp & Vibrant */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-contain md:bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${organization.heroBgPath}')` }}
       />
-      {/* Soft Warm Ivory Readability Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-rhema-ivory/95 via-rhema-ivory/85 to-rhema-ivory/65" />
+      {/* Light, Targeted Readability Veil (Leaves Cross, Africa & Bible Vivid) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/35 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Editorial Narrative */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rhema-green text-rhema-goldLight text-xs font-semibold tracking-wider uppercase shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rhema-green text-rhema-goldLight text-xs font-semibold tracking-wider uppercase shadow-md">
             <Sparkles className="w-3.5 h-3.5 text-rhema-gold" />
             <span>Faith • Hope • Impact — Across Kenya &amp; Africa</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-rhema-green leading-[1.15] tracking-tight drop-shadow-sm">
+          <h1
+            className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-rhema-green leading-[1.15] tracking-tight"
+            style={{ textShadow: "0 2px 14px rgba(255,255,255,0.95), 0 1px 3px rgba(255,255,255,1)" }}
+          >
             {organization.tagline}
           </h1>
 
-          <p className="font-serif italic text-xl text-rhema-burgundy font-semibold">
+          <p
+            className="font-serif italic text-xl text-rhema-burgundy font-bold"
+            style={{ textShadow: "0 1px 10px rgba(255,255,255,0.95)" }}
+          >
             “{organization.motto}”
           </p>
 
-          <p className="text-base md:text-lg text-rhema-ink/90 leading-relaxed max-w-2xl font-medium">
+          <p className="text-base md:text-lg text-rhema-ink leading-relaxed max-w-2xl font-semibold bg-white/75 backdrop-blur-[2px] p-4 rounded-xl border border-white/80 shadow-sm">
             Led by{" "}
             <span className="text-rhema-green font-bold underline decoration-rhema-gold decoration-2 underline-offset-4">
               {founders.names}
@@ -53,7 +59,7 @@ export default function Hero() {
             </a>
             <a
               href="#founders"
-              className="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-rhema-green border-2 border-rhema-green/30 font-bold px-6 py-3.5 rounded-lg shadow-sm transition"
+              className="inline-flex items-center gap-2 bg-white/95 hover:bg-white text-rhema-green border-2 border-rhema-green/40 font-bold px-6 py-3.5 rounded-lg shadow-md transition"
             >
               <span>Read Our Story</span>
             </a>
@@ -66,7 +72,7 @@ export default function Hero() {
                 <BookOpen className="w-4 h-4 text-rhema-gold" />
                 <span>{scriptures.primary.reference}</span>
               </div>
-              <p className="text-sm text-rhema-ink/90 leading-relaxed">
+              <p className="text-sm text-rhema-ink/90 leading-relaxed font-medium">
                 {scriptures.primary.summary}
               </p>
             </div>
