@@ -7,19 +7,21 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-white text-rhema-ink border-b-4 border-rhema-gold">
-      {/* Full Uncropped Ministry Artwork with Soft Edge Blending (No Hard Square Borders) */}
-      <div
-        className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('${organization.heroBgPath}')`,
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 82%, transparent 100%)",
-          WebkitMaskComposite: "source-in",
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 82%, transparent 100%)",
-          maskComposite: "intersect",
-        }}
-      />
+      {/* Uncropped Artwork Image with Direct Edge-Feathering (Eliminates Hard Left/Right Corners) */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <img
+          src={organization.heroBgPath}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-auto max-w-none object-contain select-none"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%)",
+          }}
+        />
+      </div>
 
       <div className="relative max-w-6xl mx-auto px-4 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left Editorial Narrative */}
@@ -43,7 +45,7 @@ export default function Hero() {
             “{organization.motto}”
           </p>
 
-          {/* Clean Editorial Lead + Credential Badges (No Clashing Underline) */}
+          {/* Clean Editorial Lead + Credential Badges */}
           <div className="space-y-3.5 max-w-2xl">
             <p
               className="text-base md:text-lg text-rhema-ink leading-relaxed font-semibold"
@@ -95,7 +97,7 @@ export default function Hero() {
 
           {/* Guiding Scripture Strip */}
           <div className="pt-2">
-            <div className="bg-white/92 backdrop-blur-sm border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl shadow-md max-w-xl">
+            <div className="bg-white/95 backdrop-blur-sm border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl shadow-md max-w-xl">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rhema-burgundy mb-1">
                 <BookOpen className="w-4 h-4 text-rhema-gold" />
                 <span>{scriptures.primary.reference}</span>
