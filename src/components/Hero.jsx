@@ -6,36 +6,34 @@ export default function Hero() {
   const { organization, founders, scriptures } = ministryContent;
 
   return (
-    <section className="relative overflow-hidden bg-rhema-green text-white border-b-4 border-rhema-gold">
-      {/* Subtle Decorative Radial Glow */}
+    <section className="relative overflow-hidden bg-rhema-ivory text-rhema-ink border-b-4 border-rhema-gold">
+      {/* Custom Ministry Artwork Background */}
       <div
-        className="pointer-events-none absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, #D49A2A 0%, transparent 70%)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url('${organization.heroBgPath}')` }}
       />
-      <div
-        className="pointer-events-none absolute -bottom-32 -left-24 w-[440px] h-[440px] rounded-full opacity-25 blur-3xl"
-        style={{ background: "radial-gradient(circle, #7A151B 0%, transparent 70%)" }}
-      />
+      {/* Soft Warm Ivory Readability Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-rhema-ivory/95 via-rhema-ivory/85 to-rhema-ivory/65" />
 
       <div className="relative max-w-6xl mx-auto px-4 py-14 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Editorial Narrative */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-rhema-gold/40 text-rhema-goldLight text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rhema-green text-rhema-goldLight text-xs font-semibold tracking-wider uppercase shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-rhema-gold" />
             <span>Faith • Hope • Impact — Across Kenya &amp; Africa</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-white leading-[1.15] tracking-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-rhema-green leading-[1.15] tracking-tight drop-shadow-sm">
             {organization.tagline}
           </h1>
 
-          <p className="font-serif italic text-xl text-rhema-gold font-medium">
+          <p className="font-serif italic text-xl text-rhema-burgundy font-semibold">
             “{organization.motto}”
           </p>
 
-          <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
+          <p className="text-base md:text-lg text-rhema-ink/90 leading-relaxed max-w-2xl font-medium">
             Led by{" "}
-            <span className="text-white font-semibold underline decoration-rhema-gold decoration-2 underline-offset-4">
+            <span className="text-rhema-green font-bold underline decoration-rhema-gold decoration-2 underline-offset-4">
               {founders.names}
             </span>
             —husband and wife, Ordained Ministers, and Registered Nurses—Rhema
@@ -47,28 +45,28 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="#partner"
-              className="inline-flex items-center gap-2.5 bg-rhema-gold hover:bg-amber-500 text-rhema-ink font-bold px-7 py-3.5 rounded-lg shadow-lg shadow-black/25 transition transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2.5 bg-rhema-green hover:bg-rhema-greenLight text-white font-bold px-7 py-3.5 rounded-lg shadow-lg transition transform hover:-translate-y-0.5"
             >
-              <HeartHandshake className="w-5 h-5 text-rhema-burgundy" />
+              <HeartHandshake className="w-5 h-5 text-rhema-gold" />
               <span>Partner With the Mission</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-rhema-gold" />
             </a>
             <a
               href="#founders"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold px-6 py-3.5 rounded-lg backdrop-blur-sm transition"
+              className="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-rhema-green border-2 border-rhema-green/30 font-bold px-6 py-3.5 rounded-lg shadow-sm transition"
             >
               <span>Read Our Story</span>
             </a>
           </div>
 
           {/* Guiding Scripture Strip */}
-          <div className="pt-4">
-            <div className="bg-black/25 border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl backdrop-blur-sm max-w-xl">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rhema-gold mb-1">
-                <BookOpen className="w-4 h-4" />
+          <div className="pt-3">
+            <div className="bg-white/90 backdrop-blur-sm border-l-4 border-rhema-gold px-5 py-4 rounded-r-xl shadow-md max-w-xl">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rhema-burgundy mb-1">
+                <BookOpen className="w-4 h-4 text-rhema-gold" />
                 <span>{scriptures.primary.reference}</span>
               </div>
-              <p className="text-sm text-white/90 leading-relaxed">
+              <p className="text-sm text-rhema-ink/90 leading-relaxed">
                 {scriptures.primary.summary}
               </p>
             </div>
@@ -79,9 +77,9 @@ export default function Hero() {
         <div className="lg:col-span-5">
           <div className="relative mx-auto max-w-md">
             {/* Decorative Gold Offset Frame */}
-            <div className="absolute -inset-2.5 rounded-2xl bg-gradient-to-tr from-rhema-gold via-rhema-burgundy to-rhema-gold opacity-75 blur-[1px]" />
+            <div className="absolute -inset-2.5 rounded-2xl bg-gradient-to-tr from-rhema-gold via-rhema-green to-rhema-gold opacity-80 blur-[1px]" />
 
-            <div className="relative bg-rhema-ivory p-3 rounded-2xl shadow-2xl">
+            <div className="relative bg-white p-3 rounded-2xl shadow-2xl">
               <div className="relative overflow-hidden rounded-xl">
                 <img
                   src={founders.portraitPath}
@@ -96,7 +94,7 @@ export default function Hero() {
                   <p className="font-serif text-lg font-bold leading-snug">
                     {founders.names}
                   </p>
-                  <p className="text-xs text-white/80 mt-0.5">
+                  <p className="text-xs text-white/85 mt-0.5">
                     Ordained Ministers • Registered Nurses • 19 Years of Marriage
                   </p>
                 </div>
@@ -120,7 +118,7 @@ export default function Hero() {
                   </div>
                 </div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-rhema-green bg-rhema-green/10 px-2.5 py-1 rounded-full">
-                  Est. Faith Legacy
+                  Faith • Hope • Impact
                 </span>
               </div>
             </div>

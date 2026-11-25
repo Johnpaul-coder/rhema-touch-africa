@@ -5,6 +5,7 @@ export const ministryContent = {
     motto: "Propelling Lives to Their Destiny.",
     values: ["Faith", "Hope", "Impact"],
     logoPath: "/images/logo.jpeg",
+    heroBgPath: "/images/hero-bg.jpeg",
     letterheadPath: "/images/letterhead-blue.jpeg",
     email: "Info@Rhematouchafrica.org",
     phone: "971-294-0034",
