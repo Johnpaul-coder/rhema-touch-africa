@@ -7,10 +7,18 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-white text-rhema-ink border-b-4 border-rhema-gold">
-      {/* Full Uncropped Ministry Artwork - Native Aspect Ratio, Zero Blur/Stretch */}
+      {/* Full Uncropped Ministry Artwork with Soft Edge Blending (No Hard Square Borders) */}
       <div
         className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${organization.heroBgPath}')` }}
+        style={{
+          backgroundImage: `url('${organization.heroBgPath}')`,
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 82%, transparent 100%)",
+          WebkitMaskComposite: "source-in",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, black 82%, transparent 100%)",
+          maskComposite: "intersect",
+        }}
       />
 
       <div className="relative max-w-6xl mx-auto px-4 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -35,7 +43,7 @@ export default function Hero() {
             “{organization.motto}”
           </p>
 
-          {/* Clean Editorial Lead + Credential Badges */}
+          {/* Clean Editorial Lead + Credential Badges (No Clashing Underline) */}
           <div className="space-y-3.5 max-w-2xl">
             <p
               className="text-base md:text-lg text-rhema-ink leading-relaxed font-semibold"
@@ -45,7 +53,7 @@ export default function Hero() {
               }}
             >
               Led by{" "}
-              <span className="text-rhema-green font-extrabold underline decoration-rhema-gold decoration-2 underline-offset-4">
+              <span className="text-rhema-green font-extrabold">
                 {founders.names}
               </span>
               , Rhema Touch Africa turns Christian compassion into practical
