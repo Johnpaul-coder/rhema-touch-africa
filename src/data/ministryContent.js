@@ -9,7 +9,7 @@ export const ministryContent = {
     email: "Info@Rhematouchafrica.org",
     phone: "971-294-0034",
     fax: "503-334-1824",
-    regions: "Portland, Oregon (USA) • Nairobi & Githurai 45 (Kenya)",
+    regions: "Portland, Oregon (USA) • Kenya & Across Africa",
   },
 
   scriptures: {

@@ -91,7 +91,7 @@ export default function Hero() {
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-5 text-white">
                   <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-rhema-gold font-bold mb-1">
                     <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>Co-Founders • Portland &amp; Nairobi</span>
+                    <span>Co-Founders • Kenya &amp; Across Africa</span>
                   </div>
                   <p className="font-serif text-lg font-bold leading-snug">
                     {founders.names}
