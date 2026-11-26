@@ -1,18 +1,10 @@
 import React, { useState } from "react";
-import {
-  ShieldCheck,
-  Heart,
-  Stethoscope,
-  Award,
-  FileText,
-  X,
-} from "lucide-react";
+import { ShieldCheck, Heart, Stethoscope, Award } from "lucide-react";
 import { ministryContent } from "../data/ministryContent";
 
 export default function FoundersBio() {
   const { founders } = ministryContent;
   const [activeTab, setActiveTab] = useState("stewardship");
-  const [flyerOpen, setFlyerOpen] = useState(false);
 
   return (
     <section
@@ -36,16 +28,16 @@ export default function FoundersBio() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Compact Portrait Card */}
+          {/* Left Portrait Card (Clean — Bottom Bar Removed) */}
           <div className="lg:col-span-5">
-            <div className="bg-rhema-ivory p-4 rounded-3xl border border-rhema-gold/30 shadow-md">
+            <div className="bg-rhema-ivory p-3.5 rounded-3xl border border-rhema-gold/30 shadow-md">
               <div className="relative overflow-hidden rounded-2xl">
                 <img
                   src={founders.portraitPath}
                   alt={founders.names}
-                  className="w-full h-[380px] object-cover object-top"
+                  className="w-full h-[400px] object-cover object-top"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-5 text-white">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-5 text-white">
                   <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-rhema-gold mb-1">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Co-Founders &amp; Field Directors</span>
@@ -57,20 +49,6 @@ export default function FoundersBio() {
                     {founders.titles}
                   </p>
                 </div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between gap-2 px-1">
-                <span className="text-xs font-semibold text-rhema-ink/75">
-                  Portland, OR • Kenya &amp; East Africa
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setFlyerOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-rhema-green hover:text-rhema-burgundy underline underline-offset-4"
-                >
-                  <FileText className="w-3.5 h-3.5" />
-                  <span>View Co-Founder Profile</span>
-                </button>
               </div>
             </div>
           </div>
@@ -179,32 +157,6 @@ export default function FoundersBio() {
           </div>
         </div>
       </div>
-
-      {/* Co-Founder Profile Lightbox */}
-      {flyerOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setFlyerOpen(false)}
-        >
-          <div
-            className="relative max-w-lg w-full bg-white rounded-2xl p-3 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setFlyerOpen(false)}
-              className="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-rhema-burgundy text-white flex items-center justify-center shadow-lg"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <img
-              src={founders.perisFlyerPath}
-              alt={founders.perisSpotlight.name}
-              className="w-full max-h-[82vh] object-contain rounded-xl"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }

@@ -170,12 +170,12 @@ export const ministryContent = {
       name: "Minister Peris Wanjiku Kahoro",
       role: "Co-Founder & Registered Nurse",
       credentials: "Registered Nurse & Business Information Systems Technology",
-      bio: "Peris combines clinical nursing excellence with Business Information Systems Technology to organize transparent, accountable healthcare outreach and community empowerment programs.",
+      bio: "Combining seasoned clinical nursing expertise with Business Information Systems Technology, Minister Peris leads the medical coordination, quality standards, and compassionate outreach systems of Rhema Touch Africa—ensuring every medical camp and community program delivers dignified, transparent, and life-transforming care.",
     },
     family: {
       marriageYears: "19 Years of Marriage",
       summary:
-        "Grounded in 19 years of marriage, faith, and shared service, Nelson and Peris raise three boys and a daughter while stewarding family ventures and ministry outreach.",
+        "Grounded in 19 years of marriage, faith, and shared service, Nelson and Peris raise three boys at home while remaining deeply devoted to their daughter who lives afar—stewarding family values alongside active ministry outreach.",
     },
   },
 
