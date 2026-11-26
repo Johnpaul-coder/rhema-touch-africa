@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ministryContent } from "../data/ministryContent";
 
 export default function Hero({ customSlides }) {
@@ -10,74 +10,90 @@ export default function Hero({ customSlides }) {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Rotate ONLY the Scripture Focus strip every 7 seconds (main headline stays fixed)
   useEffect(() => {
     if (slides.length <= 1) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  const primary = slides[0];
-  const currentScripture = slides[activeIndex] || primary;
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  const current = slides[activeIndex] || slides[0];
 
   return (
     <section
       id="top"
-      className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-[#072A1C] via-[#0D4A30] to-[#16382E] text-white"
+      className="relative min-h-[92vh] flex items-center overflow-hidden bg-[#0A2218] text-white"
     >
-      {/* Warm Gold & Crimson Sunrise Ambient Glows (Gives Depth & Life Without Blur/Clutter) */}
-      <div className="pointer-events-none absolute -top-24 right-[-6%] w-[520px] h-[520px] rounded-full bg-rhema-gold/20 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-[-15%] right-[12%] w-[420px] h-[420px] rounded-full bg-rhema-burgundy/25 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/3 left-[-10%] w-[360px] h-[360px] rounded-full bg-emerald-400/10 blur-3xl" />
+      {/* Full-Bleed Crisp Background Artwork with Smooth Ken Burns Motion */}
+      {slides.map((slide, idx) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            idx === activeIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <img
+            src={slide.bgImage || "/images/hero-bg.jpeg"}
+            alt={slide.titleTop}
+            className={`w-full h-full object-cover object-center transition-transform duration-[7000ms] ease-out ${
+              idx === activeIndex ? "scale-105" : "scale-100"
+            }`}
+          />
+        </div>
+      ))}
 
-      {/* Subtle Architectural Cross-Grid Pattern */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, #F4C95D 1px, transparent 0)",
-          backgroundSize: "32px 32px",
-        }}
-      />
+      {/* Directional Gradient Scrim (Keeps Left Text Readable While Leaving Right Picture Vivid & Sharp) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#081F15]/95 via-[#0B291D]/75 to-[#0B291D]/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#081F15]/85 via-transparent to-[#081F15]/50" />
 
-      {/* Main Content Container */}
+      {/* Main Content Container with Animated Slide Transitions */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="max-w-2xl space-y-6">
+        <div
+          key={current.id}
+          className="max-w-2xl space-y-6 animate-[fadeIn_0.7s_ease-out]"
+        >
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-rhema-gold animate-pulse" />
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-rhema-goldLight">
-              {primary.badge}
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-rhema-goldLight drop-shadow">
+              {current.badge}
             </p>
           </div>
 
           {/* Bold Two-Tone Display Headline */}
-          <h1 className="font-sans text-4xl sm:text-6xl lg:text-[68px] font-bold tracking-tight leading-[1.06]">
-            <span className="block text-white">{primary.titleTop}</span>
+          <h1 className="font-sans text-4xl sm:text-6xl lg:text-[68px] font-bold tracking-tight leading-[1.06] drop-shadow-md">
+            <span className="block text-white">{current.titleTop}</span>
             <span className="block bg-gradient-to-r from-[#F4C95D] via-[#D99B26] to-[#F4C95D] bg-clip-text text-transparent mt-1">
-              {primary.titleHighlight}
+              {current.titleHighlight}
             </span>
           </h1>
 
           {/* Mission Summary */}
-          <p className="text-base sm:text-lg text-emerald-50/90 max-w-xl leading-relaxed font-normal">
-            {primary.subtitle}
+          <p className="text-base sm:text-lg text-white/90 max-w-xl leading-relaxed font-normal drop-shadow">
+            {current.subtitle}
           </p>
 
           {/* Two Rounded Pill CTAs */}
           <div className="flex flex-wrap items-center gap-3.5 pt-2">
             <a
               href="#vision-mission"
-              className="inline-flex items-center gap-2 bg-rhema-gold hover:bg-amber-400 text-rhema-ink font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg shadow-black/20 transition transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-rhema-gold hover:bg-amber-400 text-rhema-ink font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg shadow-black/25 transition transform hover:-translate-y-0.5"
             >
               <span>Vision &amp; Mission</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href="#missions"
-              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-rhema-green/90 hover:bg-rhema-greenLight border border-white/30 backdrop-blur-sm text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5"
             >
               <span>Our Missions</span>
             </a>
@@ -85,33 +101,54 @@ export default function Hero({ customSlides }) {
 
           {/* Scripture Focus Strip */}
           <div className="pt-8 sm:pt-10 max-w-xl">
-            <div className="border-l-2 border-rhema-gold pl-4 sm:pl-5 space-y-1.5 min-h-[84px] transition-all duration-500">
-              <span className="block text-[11px] font-bold uppercase tracking-[0.22em] text-rhema-goldLight/85">
+            <div className="border-l-2 border-rhema-gold pl-4 sm:pl-5 space-y-1.5">
+              <span className="block text-[11px] font-bold uppercase tracking-[0.22em] text-rhema-goldLight">
                 SCRIPTURE FOCUS
               </span>
-              <p className="text-sm sm:text-base text-white/95 leading-relaxed">
+              <p className="text-sm sm:text-base text-white/95 leading-relaxed drop-shadow-sm">
                 <strong className="text-white font-bold">
-                  {currentScripture.scriptureRef}
+                  {current.scriptureRef}
                 </strong>{" "}
-                — {currentScripture.scriptureSummary}
+                — {current.scriptureSummary}
               </p>
             </div>
 
-            {/* Horizontal Slide Indicators */}
-            <div className="flex items-center gap-2.5 pt-6">
-              {slides.map((slide, idx) => (
+            {/* Slide Indicators + Prev/Next Controls */}
+            <div className="flex items-center justify-between pt-6 max-w-md">
+              <div className="flex items-center gap-2.5">
+                {slides.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    type="button"
+                    onClick={() => setActiveIndex(idx)}
+                    aria-label={`View slide ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === activeIndex
+                        ? "w-10 bg-rhema-gold"
+                        : "w-6 bg-white/35 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2">
                 <button
-                  key={slide.id}
                   type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  aria-label={`View scripture ${idx + 1}`}
-                  className={`h-1 rounded-full transition-all duration-300 ${
-                    idx === activeIndex
-                      ? "w-10 bg-rhema-gold"
-                      : "w-6 bg-white/30 hover:bg-white/60"
-                  }`}
-                />
-              ))}
+                  onClick={prevSlide}
+                  aria-label="Previous slide"
+                  className="w-8 h-8 rounded-full border border-white/25 bg-black/25 hover:bg-white/20 flex items-center justify-center text-white transition"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextSlide}
+                  aria-label="Next slide"
+                  className="w-8 h-8 rounded-full border border-white/25 bg-black/25 hover:bg-white/20 flex items-center justify-center text-white transition"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
